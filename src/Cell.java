@@ -6,7 +6,7 @@ public class Cell {
     private char mySymbol;
 
     public Cell() {
-        mySymbol = ' ';
+        mySymbol = '.';
     }
 
     public void move(char symbol) {

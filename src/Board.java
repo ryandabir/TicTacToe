@@ -13,7 +13,20 @@ public class Board {
         }
     }
 
-    public void move(char player, int row, int coloumn) {
+    public void move(char player, int row, int col) {
+        gameBoard[row][col].move(player);
+    }
 
+    public String toString() {
+
+        StringBuilder board = new StringBuilder();
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                board.append(gameBoard[i][j].toString());
+            }
+            board.append("\n");
+        }
+        return board.toString();
     }
 }
