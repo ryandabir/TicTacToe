@@ -3,9 +3,13 @@
  */
 public class Player {
 
-    private String mySymbol;
+    private char mySymbol;
 
-    public Player(String symbol) {
-        symbol = mySymbol;
+    public Player(char symbol) {
+        mySymbol = symbol;
+    }
+
+    public char getMySymbol() {
+        return mySymbol;
     }
 }

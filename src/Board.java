@@ -13,6 +13,10 @@ public class Board {
         }
     }
 
+    public Cell[][] getGameBoard() {
+        return gameBoard;
+    }
+
     public void move(char player, int row, int col) {
         gameBoard[row][col].move(player);
     }

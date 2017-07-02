@@ -13,6 +13,10 @@ public class Cell {
         mySymbol = symbol;
     }
 
+    public char getMySymbol() {
+        return mySymbol;
+    }
+
     public String toString() {
         return Character.toString(mySymbol);
     }
