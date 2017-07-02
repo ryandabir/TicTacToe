@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Game {
 
     private Board board;
+    int count;
 
     public Game() {
         board = new Board();
@@ -21,7 +22,7 @@ public class Game {
     public void go() {
 
         System.out.println("Welcome to TicTacToe!\n");
-        System.out.println("Would you like to be X or O?");
+        System.out.println("Player 1, choose X or O.");
 
         Player player1;
         Player player2;
@@ -43,7 +44,7 @@ public class Game {
             }
         }
 
-        System.out.println("Starting game...\n");
+        System.out.println("\nStarting game...\n");
         System.out.println(board);
 
         while (true) {
@@ -59,20 +60,59 @@ public class Game {
     }
 
     public void move(Player player) {
+
+        if(this.count == 9) {
+            System.out.println("Tie!");
+            System.exit(0);
+        }
+
         System.out.println("Select location to place symbol (format xy).");
 
         Scanner reader = new Scanner(System.in);
         int x = reader.nextInt();
         int y = reader.nextInt();
 
-        board.move(player.getMySymbol(), x, y);
+        while (!board.move(player.getMySymbol(), x, y)){
+            System.out.println("Invalid spot. Try again.");
+            x = reader.nextInt();
+            y = reader.nextInt();
+        }
 
+        this.count++;
         System.out.println(board);
     }
 
     public boolean checkWin(char symbol) {
         if (board.getGameBoard()[0][0].getMySymbol() == symbol && board.getGameBoard()[0][1].getMySymbol() == symbol && board.getGameBoard()[0][2].getMySymbol() == symbol) {
-            System.out.println("Winner");
+            System.out.println(symbol + " Has Won");
+            return true;
+        }
+        if (board.getGameBoard()[1][0].getMySymbol() == symbol && board.getGameBoard()[1][1].getMySymbol() == symbol && board.getGameBoard()[1][2].getMySymbol() == symbol) {
+            System.out.println(symbol + " Has Won");
+            return true;
+        }
+        if (board.getGameBoard()[2][0].getMySymbol() == symbol && board.getGameBoard()[2][1].getMySymbol() == symbol && board.getGameBoard()[2][2].getMySymbol() == symbol) {
+            System.out.println(symbol + " Has Won");
+            return true;
+        }
+        if (board.getGameBoard()[0][0].getMySymbol() == symbol && board.getGameBoard()[1][0].getMySymbol() == symbol && board.getGameBoard()[2][0].getMySymbol() == symbol) {
+            System.out.println(symbol + " Has Won");
+            return true;
+        }
+        if (board.getGameBoard()[0][1].getMySymbol() == symbol && board.getGameBoard()[1][1].getMySymbol() == symbol && board.getGameBoard()[2][1].getMySymbol() == symbol) {
+            System.out.println(symbol + " Has Won");
+            return true;
+        }
+        if (board.getGameBoard()[0][2].getMySymbol() == symbol && board.getGameBoard()[1][2].getMySymbol() == symbol && board.getGameBoard()[2][2].getMySymbol() == symbol) {
+            System.out.println(symbol + " Has Won");
+            return true;
+        }
+        if (board.getGameBoard()[0][0].getMySymbol() == symbol && board.getGameBoard()[1][1].getMySymbol() == symbol && board.getGameBoard()[2][2].getMySymbol() == symbol) {
+            System.out.println(symbol + " Has Won");
+            return true;
+        }
+        if (board.getGameBoard()[2][0].getMySymbol() == symbol && board.getGameBoard()[1][1].getMySymbol() == symbol && board.getGameBoard()[0][2].getMySymbol() == symbol) {
+            System.out.println(symbol + " Has Won");
             return true;
         }
         return false;

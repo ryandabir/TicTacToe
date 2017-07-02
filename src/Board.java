@@ -17,8 +17,13 @@ public class Board {
         return gameBoard;
     }
 
-    public void move(char player, int row, int col) {
+    public boolean move(char player, int row, int col) {
+        if (gameBoard[row][col].getMySymbol() != '.') {
+            return false;
+        }
+
         gameBoard[row][col].move(player);
+        return true;
     }
 
     public String toString() {
